@@ -22,6 +22,7 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <%= render @users %>
+      <%= paginate @users %>
     <% end %>
   </div>
 </div>
