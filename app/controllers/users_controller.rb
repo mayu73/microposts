@@ -47,6 +47,13 @@ class UsersController < ApplicationController
     @users = @user.follower_users.page(params[:page]).per(10).order(:id)
     render 'show_follow'
   end
+  
+  def favorite
+    @title = 'Favorite Microposts'
+    @micropost = current_user.microposts.build
+    @feed_items = current_user.favorite_microposts.page(params[:page]).per(10)
+    render template: 'static_pages/home'
+  end
 
   
   private
