@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   def favorite
     @title = 'Favorite Microposts'
     @micropost = current_user.microposts.build
-    @feed_items = current_user.favorite_microposts.page(params[:page]).per(10)
+    @feed_items = current_user.favorite_microposts.page(params[:page]).per(10).order(created_at: :desc)
     render template: 'static_pages/home'
   end
 
