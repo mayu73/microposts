@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_current_user, only: [:edit, :update]
 
   def show # 追加
    @user = User.find(params[:id])
@@ -37,6 +38,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :profile, :location)
+  end
+  
+  def check_current_user
+    @user = User.find(params[:id])
+    redirect_to root_path unless @user == current_user
   end
   
 end
