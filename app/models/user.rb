@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   has_secure_password
   validates :profile, length: { maximum: 160 }
+  validates :location, length: { maximum: 20 }
 end
