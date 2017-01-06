@@ -1,5 +1,7 @@
-<% if current_user.favorite?(micropost) %>
+<% if current_user %>
+  <% if current_user.favorite?(micropost) %>
     <%= render 'favorites/destroy', micropost: micropost %>
-<% else %>
+  <% else %>
     <%= render 'favorites/create', micropost: micropost %>
+  <% end %>
 <% end %>
